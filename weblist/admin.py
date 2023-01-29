@@ -26,7 +26,7 @@ class WebTagAdmin(admin.ModelAdmin):
 
 class WebListAdmin(admin.ModelAdmin):
     exclude = ('creator', 'created_time', 'edited_time')
-    list_display = ('id', 'web_title', 'web_type', 'get_web_tag', 'web_icon', 'web_url', 'web_description')
+    list_display = ('id', 'web_title', 'web_type', 'get_web_tag', 'web_icon', 'out_url', 'in_url', 'web_description')
 
     def get_web_tag(self, obj):
         tag_list = []

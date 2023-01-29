@@ -1,0 +1,36 @@
+<div class="container-md">
+    <nav class="navbar navbar-dark bg-dark justify-content-end">
+        {% if user.is_authenticated %}
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a href="logout/" class="form-control">登出<span
+                            class="badge badge-secondary">{{ user.username }}</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="admin/" class="btn btn-primary" placeholder="密码">管理</a>
+                </li>
+            </ul>
+        {% else %}
+            <form action="login/" method="post">
+                {% csrf_token %}
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                        <input type="text" name="username" class="form-control" placeholder="用户名">
+                    </li>
+                    <li class="nav-item">
+                        <input type="password" name="password" class="form-control" placeholder="密码">
+                    </li>
+                    <li class="nav-item">
+                        <button type="submit" class="btn btn-primary">登录</button>
+                    </li>
+                </ul>
+            </form>
+
+        {% endif %}
+
+
+    </nav>
+</div>
+
+
+

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="container">
+
+        {#    巨幕#}
+        <div class="jumbotron">
+            <h1 class="display-4">rNav</h1>
+            <p class="lead">便捷查找需要的网站。</p>
+            <hr class="my-4">
+            <a class="btn btn-primary btn-lg right" href="/admin" role="button" target="_blank">添加记录</a>
+        </div>
+
+
+        {#内容#}
+        <div class="row">
+            {% for i in web_list %}
+                <div class="col-md-3">
+                    <div class="card w-100">
+                        {#                        <img src="..." class="card-img-top" alt="...">#}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ i.web_title }}</h5>
+                            <p class="card-text">{{ i.web_description }}</p>
+                            {% if i.web_url != '' and i.web_url != None %}
+                                <a href="{{ i.web_url }}" class="btn btn-primary" target="_blank">域名</a>
+                            {% endif %}
+                            {% if i.out_url != '' and i.out_url != None and is_auth == True%}
+                                <a href="{{ i.out_url }}" class="btn btn-warning" target="_blank">外网</a>
+                            {% endif %}
+
+                            {% if i.in_url != None and i.in_url != '' and is_auth == True%}
+                                <a href="{{ i.in_url }}" class="btn btn-dark" target="_blank">内网</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+
+{% endblock %}

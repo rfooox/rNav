@@ -43,12 +43,13 @@ class WebTag(models.Model):
 class WebList(models.Model):
     # WebList: 职位实体的翻译
     web_title = models.CharField(max_length=200, blank=False, null=True, verbose_name='网站标题')
-    web_url = models.URLField(blank=False, null=True, verbose_name='网站链接')
+    web_url = models.URLField(blank=True, null=True, verbose_name='网站链接')
+    out_url = models.URLField(blank=True, null=True, verbose_name='外网地址')
+    in_url = models.URLField(blank=True, null=True, verbose_name='内网地址')
     web_type = models.ForeignKey(to=WebType, on_delete=models.SET_NULL, verbose_name='网站类型', null=True, blank=True)
     web_description = models.TextField(blank=True, null=True, verbose_name='网站描述')
     web_icon = models.ImageField(blank=True, null=True, verbose_name='网站图标')
-    # tag = TaggableManager(blank=True, verbose_name='标签')
-    tag = models.ManyToManyField(to=WebTag, verbose_name='网站标签')
+    tag = models.ManyToManyField(to=WebTag, blank=True, null=True, verbose_name='网站标签')
 
     creator = models.ForeignKey(User, verbose_name='创建人', null=True, on_delete=models.SET_NULL)
     created_time = models.DateTimeField(verbose_name='创建日期', auto_now_add=True)

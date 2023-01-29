@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from weblist.views import nav, login_view, logout_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', nav),
+    path('login/', login_view),
+    path('logout/', logout_view),
 ]

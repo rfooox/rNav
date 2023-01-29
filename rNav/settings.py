@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'taggit',
+    'bootstrap4',
 
     'weblist',
 ]
@@ -59,7 +60,7 @@ ROOT_URLCONF = 'rNav.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -140,5 +141,5 @@ SIMPLEUI_HOME_QUICK = False
 SIMPLEUI_HOME_ACTION = False
 
 SIMPLEUI_HOME_TITLE = 'rNav'  # 【首页】按钮文案配置
-SIMPLEUI_HOME_PAGE = 'https://bing.com'  # 可用于嵌入其他链接，这里可以直接方便的嵌入报表链接
+SIMPLEUI_HOME_PAGE = '/'  # 可用于嵌入其他链接，这里可以直接方便的嵌入报表链接
 # SIMPLEUI_HOME_ICON = 'el el-icon-platform-eleme'  # 首页图标
